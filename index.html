@@ -1,372 +1,901 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Website pribadi Desta Al Ezarianto, mahasiswa Teknik Informatika yang tertarik pada teknologi, pemrograman, jaringan komputer, dan futsal.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080914">
+<meta name="description" content="Portofolio Desta Al Ezarianto, mahasiswa Teknik Informatika yang tertarik pada pemrograman, jaringan komputer, dan teknologi.">
 <meta name="robots" content="index,follow">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Desta Al Ezarianto | Personal Website">
-<meta property="og:description" content="Profil, perjalanan belajar teknologi, dan galeri foto Desta Al Ezarianto.">
-<title>Desta Al Ezarianto | Personal Website</title>
+<meta property="og:title" content="Desta.exe | Cyberpunk Portfolio">
+<meta property="og:description" content="Welcome to my digital world.">
+<title>Desta.exe | Cyberpunk Portfolio</title>
 
 <style>
 :root {
-  color-scheme: light;
-  --ink: #1c2430;
-  --muted: #667085;
-  --line: #e7e9ee;
-  --paper: #fbfaf8;
-  --white: #fff;
-  --accent: #315c52;
-  --soft: #eaf1ed;
+  --bg: #080914;
+  --panel: #101326;
+  --panel2: #151a30;
+  --cyan: #00f5ff;
+  --purple: #b44cff;
+  --pink: #ff4fd8;
+  --text: #eef3ff;
+  --muted: #9aa6c6;
+  --border: rgba(0,245,255,.2);
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
 
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-a { color: inherit; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(0,245,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,.035) 1px, transparent 1px);
+  background-size: 35px 35px;
+}
 
-.wrap {
-  width: min(1040px, calc(100% - 36px));
+body::after {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--purple);
+  filter: blur(150px);
+  opacity: .12;
+  top: 15%;
+  right: -150px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1100px, calc(100% - 32px));
   margin: auto;
 }
 
+/* NAVIGATION */
+
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-  gap: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(8,9,20,.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
 }
 
-.brand { font-weight: 750; letter-spacing: .02em; }
-
-.navlinks {
+.nav-inner {
+  min-height: 70px;
   display: flex;
-  gap: 18px;
-  font-size: .92rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  text-shadow: 0 0 15px rgba(0,245,255,.6);
+}
+
+.logo span {
+  color: var(--purple);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-links a {
+  font-size: .87rem;
+  color: var(--muted);
+  transition: .25s;
+}
+
+.nav-links a:hover {
+  color: var(--cyan);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 570px;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 48px;
+  padding: 75px 0;
+}
+
+.terminal-label {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  background: rgba(0,245,255,.055);
+  padding: 7px 13px;
+  border-radius: 5px;
+  font-size: .76rem;
+  letter-spacing: 1.4px;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .35; }
+}
+
+.hero h1 {
+  font-size: clamp(2.7rem, 7vw, 5.4rem);
+  line-height: 1.06;
+  letter-spacing: -3px;
+  margin: 25px 0 12px;
+}
+
+.hero h1 span {
+  color: var(--cyan);
+  text-shadow: 0 0 30px rgba(0,245,255,.3);
+}
+
+.typing-line {
+  min-height: 38px;
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  color: var(--purple);
+  font-weight: 700;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 4px;
+  vertical-align: middle;
+  background: var(--cyan);
+  animation: blink .7s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.hero-desc {
+  max-width: 540px;
+  margin: 20px 0 26px;
   color: var(--muted);
 }
 
-.navlinks a { text-decoration: none; }
-.navlinks a:hover { color: var(--accent); }
-
-.hero {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: 48px;
-  align-items: center;
-  padding: 68px 0 58px;
-}
-
-.eyebrow {
-  color: var(--accent);
-  font-size: .78rem;
-  font-weight: 750;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-}
-
-h1 {
-  font-size: clamp(2.6rem, 7vw, 5.2rem);
-  line-height: 1.02;
-  letter-spacing: -.055em;
-  margin: 14px 0 22px;
-  font-weight: 760;
-}
-
-.lead {
-  font-size: 1.08rem;
-  max-width: 550px;
-  color: #596273;
-}
-
-.tags {
+.buttons {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
-  margin-top: 24px;
+  gap: 12px;
 }
 
-.tag {
-  border: 1px solid #d9e3dd;
-  background: var(--soft);
-  color: #315c52;
-  border-radius: 99px;
-  padding: 6px 12px;
-  font-size: .84rem;
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 18px;
+  border-radius: 6px;
+  font-size: .9rem;
+  font-weight: 800;
+  border: 1px solid var(--cyan);
+  transition: .25s;
+}
+
+.btn-primary {
+  background: var(--cyan);
+  color: #080914;
+  box-shadow: 0 0 18px rgba(0,245,255,.2);
+}
+
+.btn-secondary {
+  color: var(--cyan);
+  background: rgba(0,245,255,.04);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 24px rgba(0,245,255,.28);
+}
+
+.hero-visual {
+  position: relative;
+  max-width: 390px;
+  width: 100%;
+  justify-self: center;
+}
+
+.photo-frame {
+  position: relative;
+  padding: 9px;
+  border: 1px solid var(--cyan);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(0,245,255,.1), rgba(180,76,255,.13));
+  box-shadow: 0 0 25px rgba(0,245,255,.13),
+              12px 12px 0 rgba(180,76,255,.10);
+}
+
+.photo-frame::before {
+  content: "PROFILE_DATA.exe";
+  position: absolute;
+  top: -13px;
+  left: 15px;
+  padding: 2px 9px;
+  background: var(--bg);
+  color: var(--cyan);
+  font-size: .68rem;
+  letter-spacing: 1px;
+  z-index: 2;
 }
 
 .hero-photo {
   width: 100%;
-  height: 470px;
+  height: 390px;
+  display: block;
   object-fit: cover;
   object-position: center 30%;
   border-radius: 8px;
-  background: #ecebe6;
+  background: var(--panel);
 }
 
-section {
-  padding: 46px 0;
-  border-top: 1px solid var(--line);
-}
-
-.section-head {
+.visual-caption {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
-  align-items: end;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  line-height: 1.15;
-  letter-spacing: -.035em;
-  margin: 0 0 8px;
-}
-
-.section-head p, .about p {
+  gap: 10px;
+  margin-top: 16px;
+  font-size: .75rem;
   color: var(--muted);
-  margin: 0;
-  max-width: 650px;
 }
+
+.visual-caption span:first-child {
+  color: var(--cyan);
+}
+
+/* SECTIONS */
+
+section {
+  padding: 75px 0;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.section-kicker {
+  color: var(--cyan);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.section-desc {
+  color: var(--muted);
+  margin-top: 12px;
+  max-width: 620px;
+}
+
+.section-heading {
+  margin-bottom: 32px;
+}
+
+/* ABOUT */
 
 .about-grid {
   display: grid;
   grid-template-columns: .8fr 1.2fr;
-  gap: 32px;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-.small-label {
-  font-size: .8rem;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--accent);
-  font-weight: 750;
+.info-card {
+  padding: 25px;
+  background: rgba(16,19,38,.88);
+  border: 1px solid var(--border);
+  border-radius: 10px;
 }
+
+.info-card h3 {
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.stat {
+  border: 1px solid rgba(180,76,255,.28);
+  background: rgba(180,76,255,.06);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.stat strong {
+  display: block;
+  color: var(--purple);
+  font-size: 1.05rem;
+}
+
+.stat small {
+  color: var(--muted);
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.skill-card {
+  background: var(--panel);
+  border: 1px solid rgba(180,76,255,.22);
+  border-radius: 10px;
+  padding: 22px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0,245,255,.08);
+}
+
+.skill-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.skill-card h3 {
+  font-size: 1rem;
+  margin-bottom: 7px;
+}
+
+.skill-card p {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.skill-status {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: .7rem;
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* GALLERY */
 
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
-.tile {
-  margin: 0;
-  background: var(--white);
-  border: 1px solid var(--line);
-  padding: 9px;
+.gallery-card {
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid rgba(0,245,255,.17);
   border-radius: 10px;
+  transition: .3s;
 }
 
-.tile img {
+.gallery-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cyan);
+  box-shadow: 0 0 22px rgba(0,245,255,.1);
+}
+
+.gallery-card img {
   display: block;
   width: 100%;
-  height: 350px;
+  height: 330px;
   object-fit: cover;
-  border-radius: 5px;
+  background: var(--panel2);
+  transition: transform .4s;
 }
 
-.tile figcaption {
-  padding: 10px 4px 3px;
-  font-size: .9rem;
+.gallery-card:hover img {
+  transform: scale(1.025);
+}
+
+.gallery-caption {
+  padding: 15px 17px;
+}
+
+.gallery-caption strong {
+  display: block;
+  color: var(--cyan);
+  font-size: .95rem;
+}
+
+.gallery-caption span {
   color: var(--muted);
+  font-size: .8rem;
 }
 
-.project {
-  padding: 22px;
-  border: 1px solid var(--line);
+/* JOURNEY */
+
+.journey {
+  padding: 25px;
+  background: linear-gradient(120deg, rgba(0,245,255,.06), rgba(180,76,255,.08));
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: var(--white);
 }
 
-.project p {
-  color: var(--muted);
-  margin-bottom: 0;
+.journey code {
+  color: var(--cyan);
+  font-size: .88rem;
+  overflow-wrap: anywhere;
 }
+
+.journey p {
+  color: var(--muted);
+  margin-top: 13px;
+}
+
+/* FOOTER */
 
 footer {
-  padding: 28px 0 36px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
   color: var(--muted);
-  font-size: .9rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  font-size: .82rem;
 }
 
-@media (max-width: 720px) {
-  .navlinks { gap: 10px; font-size: .82rem; }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-inner span:first-child {
+  color: var(--cyan);
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .nav-inner {
+    min-height: 64px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: .78rem;
+  }
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 44px 0;
+    gap: 38px;
+    padding: 55px 0;
+  }
+
+  .hero-visual {
+    width: min(100%, 360px);
   }
 
   .hero-photo {
-    height: 420px;
-    order: -1;
+    height: 360px;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
   }
 
-  .section-head { display: block; }
-  .tile img { height: 280px; }
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  section {
+    padding: 55px 0;
+  }
+
+  .gallery-card img {
+    height: 270px;
+  }
 }
 
-@media (max-width: 430px) {
-  .wrap { width: calc(100% - 26px); }
-  .brand { font-size: .9rem; }
-  .navlinks { gap: 8px; }
-  .navlinks a { font-size: .78rem; }
-  .hero-photo { height: 360px; }
-  .gallery { grid-template-columns: 1fr; }
+@media (max-width: 440px) {
+  .container {
+    width: calc(100% - 26px);
+  }
 
-  .tile img {
+  .logo {
+    font-size: 1.05rem;
+  }
+
+  .nav-links {
+    gap: 9px;
+  }
+
+  .nav-links a {
+    font-size: .72rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 13vw, 3.8rem);
+    letter-spacing: -2px;
+  }
+
+  .hero-photo {
+    height: 340px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-card img {
     height: auto;
-    max-height: 480px;
+    max-height: 450px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 10px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<nav aria-label="Navigasi utama">
-  <div class="brand">D.A.E.</div>
-  <div class="navlinks">
-    <a href="#tentang">Tentang</a>
-    <a href="#galeri">Galeri</a>
-    <a href="#minat">Minat</a>
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#home">DESTA<span>.exe</span></a>
+    <div class="nav-links">
+      <a href="#about">Profil</a>
+      <a href="#skills">Skill</a>
+      <a href="#gallery">Galeri</a>
+    </div>
   </div>
 </nav>
 
 <main>
-<header class="hero">
-  <div>
-    <div class="eyebrow">Personal website</div>
-    <h1>Desta Al<br>Ezarianto.</h1>
-    <p class="lead">
-      Mahasiswa Teknik Informatika yang sedang membangun perjalanan
-      di dunia teknologi, pemrograman, dan jaringan komputer.
-      Selalu belajar, mencoba, dan berkembang.
+<div class="container">
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="terminal-label">
+      <span class="pulse"></span>
+      SYSTEM ONLINE
+    </div>
+
+    <h1>Hi, I'm<br><span>Desta.</span></h1>
+
+    <div class="typing-line">
+      <span id="typing"></span><span class="cursor"></span>
+    </div>
+
+    <p class="hero-desc">
+      Mahasiswa Teknik Informatika yang sedang menjelajahi dunia
+      coding, jaringan komputer, dan teknologi. Belajar dari nol,
+      membangun kemampuan, dan menyiapkan diri untuk masa depan digital.
     </p>
-    <div class="tags">
-      <span class="tag">Informatika</span>
-      <span class="tag">Teknologi</span>
-      <span class="tag">Futsal</span>
+
+    <div class="buttons">
+      <a class="btn btn-primary" href="#gallery">Lihat Galeri ↗</a>
+      <a class="btn btn-secondary" href="#about">Tentang Gw</a>
     </div>
   </div>
 
-  <!-- FOTO UTAMA: file berada di root repository -->
-  <img class="hero-photo"
-       src="./desta-profile.png"
-       alt="Foto Desta Al Ezarianto di luar ruangan">
+  <div class="hero-visual">
+    <div class="photo-frame">
+      <img class="hero-photo"
+           src="./desta-profile.png"
+           alt="Foto profil Desta Al Ezarianto">
+    </div>
+    <div class="visual-caption">
+      <span>USER: DESTA_AL</span>
+      <span>STATUS: LEARNING</span>
+    </div>
+  </div>
 </header>
 
-<section id="tentang" class="about">
-  <div class="section-head">
-    <div>
-      <div class="small-label">01 / Profil</div>
-      <h2>Tentang Saya</h2>
-    </div>
+<section id="about">
+  <div class="section-heading">
+    <div class="section-kicker">01 / WHO AM I</div>
+    <h2 class="section-title">Tentang Gw<span style="color:var(--cyan)">.</span></h2>
+    <p class="section-desc">
+      Kenalan dengan manusia di balik layar. Bukan AI, belum jadi hacker,
+      masih rajin mengumpulkan pengalaman.
+    </p>
   </div>
 
   <div class="about-grid">
-    <p>Sedang menempuh pendidikan di bidang Teknik Informatika.</p>
-    <p>
-      Saya tertarik mempelajari cara kerja komputer, jaringan,
-      dan perangkat lunak. Website ini menjadi ruang pribadi untuk
-      mendokumentasikan perjalanan belajar, kegiatan, dan proyek
-      yang akan saya bangun.
-    </p>
+    <div class="info-card">
+      <h3>Identity Card</h3>
+      <p>
+        Nama: Desta Al Ezarianto<br>
+        Status: Mahasiswa<br>
+        Bidang: Teknik Informatika<br>
+        Fokus: Technology &amp; Programming
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <strong>IT</strong>
+          <small>My direction</small>
+        </div>
+        <div class="stat">
+          <strong>∞</strong>
+          <small>Things to learn</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>// My Story</h3>
+      <p>
+        Gw tertarik memahami cara kerja komputer, jaringan, dan perangkat
+        lunak. Berawal dari dunia Teknik Komputer dan Jaringan, sekarang
+        gw melanjutkan perjalanan di Teknik Informatika.
+      </p>
+      <p style="margin-top:14px">
+        Tujuan gw adalah terus mengembangkan skill, membuat proyek nyata,
+        dan membangun portofolio yang menunjukkan proses belajar,
+        bukan sekadar tulisan keren di internet.
+      </p>
+    </div>
   </div>
 </section>
 
-<section id="galeri">
-  <div class="section-head">
-    <div>
-      <div class="small-label">02 / Momen</div>
-      <h2>Galeri Foto</h2>
-    </div>
-    <p>Beberapa potret dari keseharian dan kegiatan.</p>
+<section id="skills">
+  <div class="section-heading">
+    <div class="section-kicker">02 / TECH STACK</div>
+    <h2 class="section-title">Skill &amp; Minat<span style="color:var(--purple)">.</span></h2>
+    <p class="section-desc">
+      Area teknologi yang sedang gw pelajari dan kembangkan.
+    </p>
+  </div>
+
+  <div class="skills-grid">
+    <article class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <h3>Web Development</h3>
+      <p>HTML, CSS, dan JavaScript untuk membangun website interaktif.</p>
+      <span class="skill-status">LEARNING</span>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <h3>Python</h3>
+      <p>Belajar sintaks, logika, algoritma, dan pemrograman dasar.</p>
+      <span class="skill-status">LEARNING</span>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-icon">🖧</div>
+      <h3>Networking</h3>
+      <p>IP addressing, subnetting, router, switch, dan jaringan komputer.</p>
+      <span class="skill-status">EXPLORING</span>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-icon">💻</div>
+      <h3>Computer Systems</h3>
+      <p>Mengenal sistem operasi, perangkat keras, dan troubleshooting.</p>
+      <span class="skill-status">EXPLORING</span>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-icon">🔐</div>
+      <h3>Cybersecurity</h3>
+      <p>Minat pada keamanan digital, privasi, dan sistem yang aman.</p>
+      <span class="skill-status">INTERESTED</span>
+    </article>
+
+    <article class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <h3>Artificial Intelligence</h3>
+      <p>Eksplorasi AI, otomatisasi, dan teknologi masa depan.</p>
+      <span class="skill-status">INTERESTED</span>
+    </article>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-heading">
+    <div class="section-kicker">03 / REAL LIFE</div>
+    <h2 class="section-title">Galeri Foto<span style="color:var(--cyan)">.</span></h2>
+    <p class="section-desc">
+      Di balik layar coding, tetap ada kehidupan di dunia nyata.
+    </p>
   </div>
 
   <div class="gallery">
-    <figure class="tile">
+    <figure class="gallery-card">
       <img src="./desta-profile.png"
            alt="Desta di luar ruangan" loading="lazy">
-      <figcaption>Di luar ruangan</figcaption>
+      <figcaption class="gallery-caption">
+        <strong>Outside Mode</strong>
+        <span>Di luar ruangan</span>
+      </figcaption>
     </figure>
 
-    <figure class="tile">
+    <figure class="gallery-card">
       <img src="./desta-casual.jpg"
            alt="Desta dalam suasana santai" loading="lazy">
-      <figcaption>Momen santai</figcaption>
+      <figcaption class="gallery-caption">
+        <strong>Casual Mode</strong>
+        <span>Momen santai</span>
+      </figcaption>
     </figure>
 
-    <figure class="tile">
+    <figure class="gallery-card">
       <img src="./desta-futsal.jpg"
            alt="Desta di lapangan futsal" loading="lazy">
-      <figcaption>Futsal</figcaption>
+      <figcaption class="gallery-caption">
+        <strong>Futsal Mode</strong>
+        <span>Di lapangan</span>
+      </figcaption>
     </figure>
 
-    <figure class="tile">
+    <figure class="gallery-card">
       <img src="./desta-evening.jpg"
-           alt="Desta pada malam hari" loading="lazy">
-      <figcaption>Malam hari</figcaption>
+           alt="Desta berfoto pada malam hari" loading="lazy">
+      <figcaption class="gallery-caption">
+        <strong>Night Mode</strong>
+        <span>Malam hari</span>
+      </figcaption>
     </figure>
 
-    <figure class="tile">
+    <figure class="gallery-card">
       <img src="./desta-friends.jpg"
-           alt="Desta bersama teman" loading="lazy">
-      <figcaption>Bersama teman</figcaption>
+           alt="Desta bersama seorang teman" loading="lazy">
+      <figcaption class="gallery-caption">
+        <strong>Social Mode</strong>
+        <span>Bersama teman</span>
+      </figcaption>
     </figure>
   </div>
 </section>
 
-<section id="minat">
-  <div class="section-head">
-    <div>
-      <div class="small-label">03 / Perjalanan</div>
-      <h2>Yang Sedang Saya Pelajari</h2>
-    </div>
+<section id="journey">
+  <div class="section-heading">
+    <div class="section-kicker">04 / NEXT MISSION</div>
+    <h2 class="section-title">The Journey<span style="color:var(--purple)">.</span></h2>
   </div>
 
-  <div class="project">
-    <strong>Teknologi &amp; pemrograman</strong>
+  <div class="journey">
+    <code>&gt; current_mission: learn_and_build()</code>
     <p>
-      Mulai dari dasar coding, logika pemrograman, sistem komputer,
-      hingga jaringan. Bagian ini bisa diperbarui seiring bertambahnya
-      proyek dan pengalaman.
+      Satu langkah setiap hari. Memahami dasar, membuat proyek,
+      memperbaiki kesalahan, dan terus berkembang menjadi developer
+      yang kompeten. Karena skill nyata lebih berguna daripada sekadar
+      punya wallpaper hacker.
     </p>
   </div>
 </section>
+
+</div>
 </main>
 
 <footer>
-  <span>© 2026 Desta Al Ezarianto</span>
-  <span>Dibuat dengan HTML &amp; CSS</span>
+  <div class="container footer-inner">
+    <span>DESTA.exe // SYSTEM ONLINE</span>
+    <span>© 2026 Desta Al Ezarianto</span>
+    <span>Built with HTML, CSS &amp; JS</span>
+  </div>
 </footer>
 
-</div>
+<script>
+const typingElement = document.getElementById("typing");
+
+const phrases = [
+  "Informatics Student",
+  "Future Developer",
+  "Tech Enthusiast",
+  "Networking Explorer"
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect() {
+  const phrase = phrases[phraseIndex];
+
+  if (deleting) {
+    charIndex--;
+  } else {
+    charIndex++;
+  }
+
+  typingElement.textContent = phrase.substring(0, charIndex);
+
+  let delay = deleting ? 45 : 90;
+
+  if (!deleting && charIndex === phrase.length) {
+    deleting = true;
+    delay = 1400;
+  } else if (deleting && charIndex === 0) {
+    deleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    delay = 350;
+  }
+
+  window.setTimeout(typeEffect, delay);
+}
+
+typeEffect();
+</script>
+
 </body>
 </html>
